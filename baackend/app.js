@@ -10,6 +10,7 @@ mongoose.connect("mongodb+srv://piyushguptaji123:Password@cluster0.mioqaa3.mongo
 {
     console.log("Db connected");
 });
+// console.log(:)
 
 app.use("/api",auth);
 app.get("/",(req,res)=>
