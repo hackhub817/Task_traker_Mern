@@ -24,7 +24,7 @@ const Navbar = () =>
                 <Link className="nav-link active mx-2" aria-current="page" to="/about">AboutUs</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active mx-2 " aria-current="page" to="/toDo">Todo</Link>
+                <Link className="nav-link active mx-2 " aria-current="page" to="/todo">Todo</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link active btn-nav mx-2 " aria-current="page" to="/signIn">SignIn</Link>
