@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import "./Todo.css";
 import TodoCards from "./TodoCards";
 import { ToastContainer, toast } from "react-toastify";
@@ -33,7 +33,7 @@ const Todo = () => {
       console.log("idis", id);
       if (id) {
         await axios
-          .post(`http://localhost:5000/api/v2/addTask`, {
+          .post(`${window.location.origin}/api/v2/addTask`, {
             title: Inputs.title,
             body: Inputs.body,
             id: id,
@@ -41,6 +41,7 @@ const Todo = () => {
           .then((response) => {
             console.log(response);
           });
+
         setInputs({ title: "", body: "" });
         toast.success("Your Task Is Added");
       } else {
@@ -53,10 +54,9 @@ const Todo = () => {
   }; // Add dependencies that the submit function relies on
 
   const del = async (Cardid) => {
-    console.log("Cardid", Cardid);
     if (id) {
       await axios
-        .delete(`http://localhost:5000/api/v2/deleteTask/${Cardid}`, {
+        .delete(`${window.location.origin}/api/v2/deleteTask/${Cardid}`, {
           data: { id: id },
         })
         .then(() => {
@@ -72,7 +72,6 @@ const Todo = () => {
   };
 
   const update = (value) => {
-    console.log(Array[value]);
     toUpdateArray = Array[value];
   };
 
@@ -80,7 +79,7 @@ const Todo = () => {
     if (id) {
       const fetch = async () => {
         await axios
-          .get(`http://localhost:5000/api/v2/getTasks/${id}`)
+          .get(`${window.location.origin}/api/v2/getTasks/${id}`)
           .then((response) => {
             setArray(response.data.list);
           })

@@ -1,27 +1,39 @@
 import React from "react";
 import "./About.css";
 
-const About = () => 
-{
-    return (
-        <div className="about d-flex justify-content-center align-items-center">
-            <div className="container ">
-            <div className="d-flex"><h1>About Me </h1></div>
-            <p>Hello everyone, My name is Piyush Gupta and I am persuing Btech From KIET GROUP OF INSTITUTIONS.
-                I have a keen interest in problem-solving and I have solved approx 300+ DSA Questions in various platforms 
-                I am also a full stack web developer and I use MERN stack. I have many problem majorily in bakcend.
-                I have also participated in various Hackathons including <b>SMART INDIA HACKATHON (SIH-2023)</b> for that my team went karnataka for final round.
-               I also believe in cotributing back to the society so , I am core member of various club and mentor juniors. 
-               <br/>
-            <h5>Piyush Gupta</h5>
-            <h5>8174075872</h5>
-            <h5>piyushguptaji123@gmail</h5>
-            </p>
-            
-            </div>
+const About = () => {
+  return (
+    <div className="about d-flex justify-content-center align-items-center">
+      <div className="container ">
+        <div className="d-flex">
+          <h1>About Me </h1>
         </div>
-        
-    );
-}
+        <p className="para">
+          My name is Piyush Gupta. I completed my B.Tech in Computer Science
+          from KIET Group of Institutions in the 2020-2024 batch. During my time
+          in college, I developed several projects using the MERN stack,
+          showcasing my skills as a full-stack developer. I have a strong
+          passion for problem-solving, particularly in Data Structures and
+          Algorithms (DSA) using Java.
+          <br />
+          <br />I actively participated in numerous hackathons, including the{" "}
+          <b>Smart India Hackathon</b>, where I represented my team at the
+          Kartarpur location, as well as international hackathons. Additionally,
+          I interned at my college, where I taught juniors about Data Structures
+          and Algorithms.
+          <br />
+          <br /> After that, I completed another internship at AKS IT Services
+          as a <b>software developer</b>, where I worked on both backend and
+          frontend development.
+          <br />
+          <br />
+          <h5>Piyush Gupta</h5>
+          <h5>8174075872</h5>
+          <h5>piyushguptaji123@gmail</h5>
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export default About;

@@ -1,10 +1,13 @@
-.about
-{
-    width:100%;
-    height: 100vh;
+.about {
+  width: 100%;
+  height: 100vh;
 }
- 
-.about h1{
+
+.about h1 {
   padding: 5px;
-    border-bottom: 1px solid rgba(240,0,0,0.87);
+  border-bottom: 1px solid rgba(240, 0, 0, 0.87);
+}
+.para {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }

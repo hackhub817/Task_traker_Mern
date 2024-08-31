@@ -20,8 +20,10 @@ const SignIn = () => {
   };
   const submit = async (e) => {
     e.preventDefault();
+    const url = `${window.location.origin}/api/v1/login`;
+    console.log("Requesting URL:", url);
     await axios
-      .post("http://localhost:5000/api/v1/login", Inputs)
+      .post(`${window.location.origin}/api/v1/login`, Inputs)
       .then((response) => {
         console.log(response);
         sessionStorage.setItem("id", response.data.others._id);
