@@ -8,7 +8,7 @@ const SignUp = () => {
   const history = useNavigate();
   const [Inputs, setInputs] = useState({
     email: "",
-    username: "",
+    name: "",
     password: "",
   });
   const change = (e) => {
@@ -26,7 +26,7 @@ const SignUp = () => {
           alert(response.data.message);
           setInputs({
             email: "",
-            username: "",
+            name: "",
             password: "",
           });
           history("/signIn");
@@ -50,11 +50,11 @@ const SignUp = () => {
 
               <input
                 className="p-2 my-3 input-signUp"
-                name="username"
-                type="username"
+                name="name"
+                type="name"
                 placeholder="Enter Your UserName"
                 onChange={change}
-                value={Inputs.username}
+                value={Inputs.name}
               />
 
               <input
@@ -71,7 +71,7 @@ const SignUp = () => {
               </button>
             </div>
           </div>
-          <div className="col-lg-4 column col-left d-flex justify-content-center align-items-center">
+          <div className="col-lg-4 column col-left d-lg-flex justify-content-center align-items-center  d-none">
             <HeadingComp first="Sign" second="Up" />
           </div>
         </div>

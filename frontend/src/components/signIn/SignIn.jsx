@@ -33,7 +33,7 @@ const SignIn = () => {
     <div className="signup">
       <div className="container">
         <div className="row">
-          <div className="col-lg-4 column col-left d-flex justify-content-center align-items-center">
+          <div className="col-lg-4 column col-left d-none d-lg-flex justify-content-center align-items-center">
             <HeadingComp first="Sign" second="In" />
           </div>
           <div className="col-lg-8 column d-flex justify-content-center align-items-center">
@@ -57,7 +57,7 @@ const SignIn = () => {
               />
 
               <button className="btn-signup p-2" onClick={submit}>
-                SignUp
+                SignIn
               </button>
             </div>
           </div>

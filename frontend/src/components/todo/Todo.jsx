@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./Todo.css";
 import TodoCards from "./TodoCards";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Update from "./Update";
 import axios from "axios";
+
 let id = sessionStorage.getItem("id");
 let toUpdateArray = [];
+
 const Todo = () => {
   const [Inputs, setInputs] = useState({
     title: "",
@@ -17,65 +19,73 @@ const Todo = () => {
   const show = () => {
     document.getElementById("textarea").style.display = "block";
   };
+
   const change = (e) => {
     const { name, value } = e.target;
     setInputs({ ...Inputs, [name]: value });
   };
+
+  // Use useCallback to memoize the submit function
   const submit = async () => {
     if (Inputs.title === "" || Inputs.body === "") {
       toast.error("Title Or Body Can't Be Empty");
     } else {
-      //   if (id) {
-      //     await axios
-      //       .post(`${window.location.origin}/api/v2/addTask`, {
-      //         title: Inputs.title,
-      //         body: Inputs.body,
-      //         id: id,
-      //       })
-      //       .then((response) => {
-      //         console.log(response);
-      //       });
-      //     setInputs({ title: "", body: "" });
-      //     toast.success("Your Task Is Added");
-      //   } else {
-      setArray([...Array, Inputs]);
-      setInputs({ title: "", body: "" });
-      toast.success("Your Task Is Added");
+      console.log("idis", id);
+      if (id) {
+        await axios
+          .post(`http://localhost:5000/api/v2/addTask`, {
+            title: Inputs.title,
+            body: Inputs.body,
+            id: id,
+          })
+          .then((response) => {
+            console.log(response);
+          });
+        setInputs({ title: "", body: "" });
+        toast.success("Your Task Is Added");
+      } else {
+        setArray([...Array, Inputs]);
+        setInputs({ title: "", body: "" });
+        toast.success("Your Task Is Added");
+        toast.error("Your Task Is Not Saved ! Please SignUp");
+      }
     }
-    //   toast.error("Your Task Is Not Saved ! Please SignUp");
-    // }
-    //}
-  };
+  }; // Add dependencies that the submit function relies on
 
-  const del = async (id) => {
-    // if (id) {
-    //   await axios
-    //     .delete(`${window.location.origin}/api/v2/deleteTask/${Cardid}`, {
-    //       data: { id: id },
-    //     })
-    //     .then(() => {
-    //       toast.success("Your Task Is Deleted");
-    //     });
-    // } else {
-    //   toast.error("Please SignUp First");
-    // }
-    Array.splice(id, "1");
-    setInputs([...Array]);
+  const del = async (Cardid) => {
+    console.log("Cardid", Cardid);
+    if (id) {
+      await axios
+        .delete(`http://localhost:5000/api/v2/deleteTask/${Cardid}`, {
+          data: { id: id },
+        })
+        .then(() => {
+          toast.success("Your Task Is Deleted");
+        });
+    } else {
+      toast.error("Please SignUp First");
+    }
   };
 
   const dis = (value) => {
     document.getElementById("todo-update").style.display = value;
   };
+
   const update = (value) => {
+    console.log(Array[value]);
     toUpdateArray = Array[value];
   };
+
   useEffect(() => {
     if (id) {
       const fetch = async () => {
         await axios
-          .get(`${window.location.origin}/api/v2/getTasks/${id}`)
+          .get(`http://localhost:5000/api/v2/getTasks/${id}`)
           .then((response) => {
             setArray(response.data.list);
+          })
+          .catch((error) => {
+            console.error("Error fetching tasks:", error);
           });
       };
       fetch();

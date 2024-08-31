@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css"
+
 const Footer = () => {
     return (
         <div className="text-white container-fluid p-3 d-flex justify-content-center align-center footer">

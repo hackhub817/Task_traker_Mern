@@ -8,7 +8,7 @@ router.post("/register", async (req, res) => {
     const email = req.body.email;
     const name = req.body.name;
     const password = req.body.password;
-    // console.log(req.body);
+    console.log(req.body);
 
     const user = new User({ email, name, password });
     await user
